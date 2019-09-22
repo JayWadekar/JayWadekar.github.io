@@ -1,0 +1,116 @@
+html, body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+
+    color: rgba(0, 0, 0, 0.9);
+}
+
+a {
+    text-decoration: none;
+    background: transparent;
+    background-size: 2px 2px;
+    background-position: 0 15px;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0) 75%, rgba(0,0,0,0.8) 75%);
+    background-repeat: repeat-x;
+    color: inherit;
+}
+
+small {
+    font-size: 13px;
+    line-height: 1.2;
+}
+
+small a {
+    background-position: 0 12px;
+}
+
+ul {
+    list-style: none;
+    margin: 20px 0;
+    padding: 0;
+}
+
+li {
+    margin: 7px 0 13px;
+    line-height: 1.2;
+}
+
+h2 {
+    display: inline;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 0 10px 0 0;
+}
+
+.content {
+    width: 600px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: left;
+    margin: 50px 0 0;
+}
+
+header img {
+    float: left; 
+    width: 150px;
+    height: 150px;
+    margin: 0 0 5px;
+}
+
+header h1 {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    top: 25px;
+    left: 25px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+header li {
+    display: inline;
+    padding: 0 9px;
+    margin: 0;
+}
+
+header:after,
+section:after {
+    content: '';
+    display: block;
+    width: 0px;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    margin-top: 60px; 
+    margin-bottom: 50px; /*margin: 60px auto;*/
+    margin-left: auto; 
+    margin-right: auto;
+    padding: 0;
+}
+
+footer {
+    text-align: center;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.5);
+    margin: 0 0 50px;
+}
+
+header a,
+footer a {
+    background: none;
+    transition: 0.2s;
+}
+
+header a:hover,
+footer a:hover {
+    color: rgba(70, 130, 180, 0.9);
+}
+
+footer a {
+    font-weight: bold;
+    text-decoration: underline;
+}
