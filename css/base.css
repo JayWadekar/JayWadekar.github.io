@@ -33,6 +33,10 @@ ul {
     padding: 0;
 }
 
+ul.bulleted {
+    list-style-type: disc;
+}
+
 li {
     margin: 7px 0 13px;
     line-height: 1.2;
