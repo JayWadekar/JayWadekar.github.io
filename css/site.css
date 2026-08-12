@@ -390,6 +390,16 @@ figure.wide {
     margin-bottom: calc(var(--space) * 0.6);
 }
 
+/* The opening line is the page's claim, not a section label, so it carries
+   more weight than the h2s below it — but well short of the reference site's
+   3rem, which would read as a product landing page. */
+h2.lead {
+    font-size: 1.5rem;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    margin-bottom: calc(var(--space) * 0.9);
+}
+
 /* Short standfirst under a section heading */
 .section-intro {
     color: var(--fg-muted);
@@ -470,6 +480,27 @@ ul.topics li {
     color: color-mix(in srgb, var(--fg) calc(45% + (var(--w) * 55%)), transparent);
 }
 
+/* ---------- Unwritten copy ---------- */
+
+/* Deliberately loud. These are placeholders for Jay to write; if one ever
+   reaches the live site it should be impossible to miss. */
+.todo {
+    display: block;
+    border-left: 3px solid var(--accent);
+    padding: 0.15em 0 0.15em 0.75em;
+    color: var(--fg-muted);
+    font-style: italic;
+}
+
+.todo::before {
+    content: "TODO ";
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    font-size: 0.78rem;
+    color: var(--accent-ink);
+}
+
 /* ---------- Footer ---------- */
 
 footer {
@@ -478,6 +509,45 @@ footer {
     border-top: 1px solid var(--rule);
     font-size: 0.9rem;
     color: var(--fg-muted);
+}
+
+/* Grouped columns, collapsing to a single column on narrow screens. */
+.footer-cols {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--space) var(--gutter);
+    margin: 0 0 calc(var(--space) * 1.5);
+}
+
+.footer-title {
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--fg-muted);
+    margin: 0 0 calc(var(--space) * 0.5);
+}
+
+footer ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+footer li {
+    margin: 0 0 calc(var(--space) * 0.25);
+}
+
+.copyright {
+    padding-top: var(--space);
+    border-top: 1px solid var(--rule);
+    font-size: 0.84rem;
+}
+
+@media (max-width: 700px) {
+    .footer-cols {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* ---------- Small screens ---------- */
