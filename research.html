@@ -16,6 +16,7 @@
     	<ul>
     	    <li><a href="index.html">About</a></li>
     	    <li><a href="research.html" class="active">Research</a></li>
+    	    <li><a href="group.html">Group</a></li>
     	    <li><a href="publications.html">Publications</a></li>
     	    <li><a href="/files/CV_JayWadekar.pdf" target="_blank" type="application/pdf">CV</a></li>
     	    <li><a href="videos.html">Videos</a></li>
@@ -35,32 +36,24 @@
     </script>
     
         <h3 id="agentic-ai">1. Agentic AI for scientific discovery</h3>
-        Beyond using machine learning inside data-analysis pipelines, my group works
-        on large language model systems that help carry out the research itself.
-        Three themes run through this work.
 
         <p>
-        <b>Validation-constrained agentic AI.</b> An agent that produces a plausible
-        analysis is not the same as an agent that produces a correct one, so the
-        interesting question is what a system is required to prove before its output
-        counts. I contribute to
+        <b>Verification-based agentic AI and physics reasoning.</b> An agent that
+        produces a plausible analysis is not the same as an agent that produces a
+        correct one, so the interesting question is what a system has to justify
+        against data and established physics before its output counts &mdash; and
+        how you measure whether it can. Gravitational-wave astronomy is an unusually
+        demanding testbed for this, because the tasks carry tight numerical
+        tolerances and a wrong answer is not obviously wrong. In
+        <i>gwBenchmarks</i>
+        (<a href="https://arxiv.org/abs/2605.11269" target="_blank">arXiv:2605.11269</a>)
+        we stress-test LLM agents on high-precision gravitational-wave problems to
+        find where their reasoning actually breaks down. I also contributed to
         <a href="https://github.com/AstroPilot-AI/Denario" target="_blank">Denario</a>,
         an open multi-agent framework for scientific discovery
         (<a href="https://arxiv.org/abs/2510.26887" target="_blank">arXiv:2510.26887</a>),
         which we used to carry out an analysis of the binary black hole merger
-        GW231123. My interest is in constraining such systems with the same
-        validation steps a careful analyst would apply, rather than trusting a
-        fluent answer.
-        </p>
-
-        <p>
-        <b>AI reasoning.</b> Gravitational-wave astronomy is an unusually demanding
-        testbed for reasoning, because the tasks have tight numerical tolerances and
-        a wrong answer is not obviously wrong. In
-        <i>gwBenchmarks</i>
-        (<a href="https://arxiv.org/abs/2605.11269" target="_blank">arXiv:2605.11269</a>)
-        we stress-test LLM agents on high-precision gravitational-wave problems to
-        find where their reasoning actually breaks down.
+        GW231123.
         </p>
 
         <p>
@@ -77,15 +70,6 @@
         (<a href="https://arxiv.org/abs/2012.00111" target="_blank">arXiv:2012.00111</a>).
         </p>
 
-        <p>
-        A related strand is making gravitational-wave codebases accessible: I have
-        built a retrieval-augmented generation framework that answers questions about
-        the <a href="https://github.com/JayWadekar/gwIAS-HM" target="_blank">IAS-HM</a>
-        pipeline codebase, drawing on the code, tutorial notebooks and the pipeline
-        papers together. This lowers the barrier for students joining the pipeline,
-        and for researchers from other fields who want to run GW data analysis with
-        new theoretical models.
-        </p>
         <br/>
         <br/>
         <br/>
@@ -125,7 +109,7 @@
         <br/>
         <br/>
     
-        <h3 id="interpretable-ml">3. Interpretable ML techniques for cosmology and astrophysics</h3>
+        <h3 id="ml-astro">3. Interpretable ML techniques for cosmology and astrophysics</h3>
         Finding low-scatter relationships in properties of complex systems (e.g., stars, supernovae, galaxies) is important to gain physical insights into them and/or to estimate their distances/masses. As the size of simulation/observational datasets grow, finding low-scatter relationships in the data becomes extremely arduous using manual data analysis methods. We used machine learning techniques to expeditiously search for such relations in abstract high-dimensional data-spaces. Focusing on clusters of galaxies, we found new scaling relations between their properties obtained using ML. Our relations can enable more accurate inference of cosmology and baryonic feedback from upcoming surveys of galaxy clusters such as ACT, SO, eROSITA and CMB-S4. We also explored the use of ML tools to model the galaxy-halo connection.
         <br/>
         <figure class="wide">

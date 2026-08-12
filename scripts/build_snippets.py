@@ -4,10 +4,12 @@
 Produces two HTML fragments, written to scripts/out/:
 
   collaborators.html  frequent co-authors, ranked by shared-paper count
+                      -> paste into group.html
   topics.html         research topics, weighted by how often they appear
+                      -> paste into index.html
 
-Both are plain <ul> markup meant to be pasted between the marker comments in
-index.html.  Nothing here runs in the browser: the site stays static HTML with
+Both are plain <ul> markup meant to be pasted between the marker comments on
+the page named above.  Nothing here runs in the browser: the site stays static HTML with
 no JavaScript, and re-running this script is the only way the lists change.
 
 Usage:

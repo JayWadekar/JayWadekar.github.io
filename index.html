@@ -16,6 +16,7 @@
     	<ul>
     	    <li><a href="index.html" class="active">About</a></li>
     	    <li><a href="research.html">Research</a></li>
+    	    <li><a href="group.html">Group</a></li>
     	    <li><a href="publications.html">Publications</a></li>
     	    <li><a href="/files/CV_JayWadekar.pdf" target="_blank" type="application/pdf">CV</a></li>
     	    <li><a href="videos.html">Videos</a></li>
@@ -60,89 +61,37 @@
     <section id="directions">
         <span class="eyebrow">Research</span>
         <h2>Research directions</h2>
-
-        <!-- The three descriptions below were drafted from Jay's own wording on
-             research.html and in the CV, not written from scratch. They are
-             placeholders pending his approval — reword freely. -->
-
-        <h3><a href="research.html#agentic-ai">Agentic AI for scientific discovery and validation</a></h3>
-        <p>Validation-constrained agent systems, AI reasoning, and interpretable
-        models &mdash; large language model agents that carry out research tasks
-        and have to justify the results they produce.</p>
-
+    
+        <h3><a href="research.html#agentic-ai">Verification-based agentic AI for scientific discovery</a></h3>
+        <p>We are interested in building verification-based agentic AI systems for scientific discovery: building agent systems that have to justify their outputs against data and established
+        physics rather than simply assert them. Current directions include GWAgent
+        for gravitational-wave research, agentic equation discovery, interpretable
+        analytic surrogates for expensive simulations, and benchmarks for
+        evaluating physics reasoning, and multi-agent systems.</p>
+    
         <h3><a href="research.html#gw-searches">Gravitational-wave searches and astrophysics</a></h3>
-        <p>We have an IAS(-HM) pipeline for LIGO&ndash;Virgo data with waveforms that include higher-order
-        harmonics rather than the quadrupole mode alone, which has turned up new
-        black hole mergers with astrophysically interesting properties &mdash; and
-        modelling their populations and progenitors.</p>
-
-        <h3><a href="research.html#covariances">Large-scale structure cosmology</a></h3>
-        <p>Analytic covariance matrices for the galaxy power spectrum, more than
-        four orders of magnitude faster than simulating thousands of mock
-        catalogues, validated against a full-shape analysis of SDSS-BOSS.</p>
+        <p>We developed the IAS-HM pipeline, which searches LIGO and Virgo data
+        using waveform templates that include higher-order harmonics rather than
+        the quadrupole mode alone. Accounting for these harmonics recovers binary
+        black hole mergers that quadrupole-only searches miss, particularly systems
+        with asymmetric masses. Related interests span astrophysical formation
+        channels, waveform modelling, parameter estimation, and population
+        inference.</p>
+        <!-- TODO: add one sentence naming your most striking individual detection
+             here, once you've confirmed how you want to characterise it. -->
+    
+        <h3><a href="research.html#ml-astro">Machine learning for astrophysics</a></h3>
+        <p>Applying machine learning to cosmological simulations in ways that yield
+        interpretable, physically meaningful models rather than black boxes. Using
+        IllustrisTNG, we showed how the baryonic content of dark matter
+        halos depends on their local environment, and used symbolic
+        regression to express that dependence as compact analytic equations.
+        Related work on the CAMELS simulations augmented the Sunyaev-Zeldovich
+        flux-mass scaling relation, reducing scatter in galaxy cluster mass
+        estimates and placing strong constraints on baryonic feedback.</p>
     </section>
 
-    <section id="group">
-        <span class="eyebrow">People</span>
-        <h2>Group</h2>
 
-        <h3>Current members</h3>
-        <ul class="people">
-            <li><span><span class="person-name">Tousif Islam</span>
-                <span class="meta">Weinberg postdoctoral fellow, UT Austin</span></span></li>
-            <li><span><span class="person-name">Omkar Sridhar</span>
-                <span class="meta">PhD student, UT Austin</span></span></li>
-        </ul>
-
-        <h3>Past students</h3>
-        <ul class="people two-col">
-            <li><span><span class="person-name">Mark Cheung</span>
-                <span class="meta">JHU graduate student &middot; three papers</span></span></li>
-            <li><span><span class="person-name">Zihui Wang</span>
-                <span class="meta">NYU graduate student &middot; three papers</span></span></li>
-            <li><span><span class="person-name">Ana Maria Delgado</span>
-                <span class="meta">Harvard graduate student &middot; one paper</span></span></li>
-            <li><span><span class="person-name">Leander Thiele</span>
-                <span class="meta">Princeton graduate student &middot; three papers</span></span></li>
-            <li><span><span class="person-name">Zihan Zhou</span>
-                <span class="meta">Princeton graduate student &middot; one paper in prep</span></span></li>
-            <li><span><span class="person-name">Abby Mintz</span>
-                <span class="meta">Princeton graduate student &middot; one paper in prep</span></span></li>
-            <li><span><span class="person-name">Konstantinos Kritos</span>
-                <span class="meta">JHU graduate student &middot; one paper in prep</span></span></li>
-            <li><span><span class="person-name">Sophia Yi</span>
-                <span class="meta">JHU graduate student &middot; one paper</span></span></li>
-            <li><span><span class="person-name">Arush Pimpalkar</span>
-                <span class="meta">NIT Trichy undergraduate &middot; one paper</span></span></li>
-            <li><span><span class="person-name">Tibor Rothschild</span>
-                <span class="meta">Yale undergraduate</span></span></li>
-            <li><span><span class="person-name">Param Gogia</span>
-                <span class="meta">Vassar College undergraduate</span></span></li>
-        </ul>
-    </section>
-
-    <section id="collaborators">
-        <span class="eyebrow">People</span>
-        <h2>Frequent collaborators</h2>
-        <p class="section-intro">Ranked by papers we have written together, across my
-        first- and second-author work.</p>
-        <!-- BEGIN generated: scripts/build_snippets.py -> collaborators.html -->
-        <ul class="people two-col">
-            <li><span><span class="person-name">Javier Roulet</span><span class="meta">Caltech &middot; 11 papers together</span></span></li>
-            <li><span><span class="person-name">Matias Zaldarriaga</span><span class="meta">IAS &middot; 11 papers together</span></span></li>
-            <li><span><span class="person-name">Ajit Kumar Mehta</span><span class="meta">CMI &middot; 10 papers together</span></span></li>
-            <li><span><span class="person-name">Tejaswi Venumadhav</span><span class="meta">UC Santa Barbara &middot; 10 papers together</span></span></li>
-            <li><span><span class="person-name">Barak Zackay</span><span class="meta">Weizmann Institute &middot; 9 papers together</span></span></li>
-            <li><span><span class="person-name">Jonathan Mushkin</span><span class="meta">Weizmann Institute &middot; 7 papers together</span></span></li>
-            <li><span><span class="person-name">Francisco Villaescusa-Navarro</span><span class="meta">Flatiron Institute &middot; 6 papers together</span></span></li>
-            <li><span><span class="person-name">Emanuele Berti</span><span class="meta">Johns Hopkins &middot; 5 papers together</span></span></li>
-            <li><span><span class="person-name">Shirley Ho</span><span class="meta">Flatiron Institute &middot; 5 papers together</span></span></li>
-            <li><span><span class="person-name">Lars Hernquist</span><span class="meta">Harvard &middot; 4 papers together</span></span></li>
-            <li><span><span class="person-name">Daniel Anglés-Alcázar</span><span class="meta">Flatiron Institute &middot; 3 papers together</span></span></li>
-            <li><span><span class="person-name">J. Colin Hill</span><span class="meta">Flatiron Institute &middot; 3 papers together</span></span></li>
-        </ul>
-        <!-- END generated -->
-    </section>
 
     <section id="topics">
         <span class="eyebrow">Research</span>
