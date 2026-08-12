@@ -13,7 +13,16 @@
     --bg:        #ffffff;
     --fg:        #1c1c1c;
     --fg-muted:  #5f5f5f;
-    --accent:    #bf5700;              /* links, active nav, section rules ONLY */
+    /* UT burnt orange, used for section rules, borders and focus rings — the
+       places where it is a shape rather than a letterform. */
+    --accent:    #bf5700;
+
+    /* The same orange darkened, for accent-coloured *text*. #bf5700 measures
+       4.59:1 on pure white: it clears WCAG AA by 0.09, so a background even
+       1% off white drops it under the line (#fdfcfb -> 4.48:1). Since the
+       page now carries a background tint, link text needs the extra depth.
+       This is 4.59:1 against the most tinted pixel the gradient produces. */
+    --accent-ink: #ad4e00;
     --rule:      rgba(0, 0, 0, 0.15);
     --code-bg:   rgba(0, 0, 0, 0.05);
 
@@ -37,6 +46,36 @@
     /* Layout */
     --measure: 70ch;
     --gutter:  calc(var(--space) * 1.6);
+
+    /* ---- Background system ----
+       --bg-hero is the single swappable background source. To use a photo
+       instead of the gradients, redefine just this one property:
+
+           :root { --bg-hero: url("images/bg/whatever.jpg"); }
+
+       Nothing else needs to change: the noise, the scrim, the sizing and the
+       repeat behaviour are all wired up around it below. If you do swap in a
+       photo, raise --bg-scrim as well — see images/bg/README.md.
+
+       Vertical offsets are in px, not %, so the wash is the same height on a
+       short page and on the 5000px research page. */
+    --bg-hero:
+        radial-gradient(58rem 38rem at 82% -80px,
+                        rgba(191, 87, 0, 0.055), transparent 62%),
+        radial-gradient(46rem 32rem at 4% 180px,
+                        rgba(191, 87, 0, 0.032), transparent 64%),
+        linear-gradient(180deg, rgba(191, 87, 0, 0.028), transparent 620px);
+
+    /* Sits between the page background and the text. Transparent while the
+       background is gradients; give it a real value if --bg-hero becomes a
+       photo, so body copy keeps its contrast. */
+    --bg-scrim: linear-gradient(transparent, transparent);
+
+    /* Monochrome fractal noise, generated inline. Breaks up the flat gradient
+       banding that large low-contrast gradients show on 8-bit displays. The
+       opacity lives inside the SVG rather than on an element, so it tints the
+       backdrop without touching the text drawn over it. */
+    --bg-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.032'/%3E%3C/svg%3E");
 }
 
 @media (prefers-color-scheme: dark) {
@@ -52,9 +91,25 @@
            threshold, so links stay legible in dark mode. The reference site
            makes the identical move (#2563eb -> #38bdf8 over its dark ground). */
         --accent:   #ff8c42;
+        /* On the dark ground the lightened accent already measures 6.3:1 over
+           the most tinted pixel, so text and rules can share one value. */
+        --accent-ink: #ff8c42;
 
         --shadow-card: 0 12px 22px -10px rgba(0, 0, 0, 0.5);
         --shadow-soft: 0 10px 20px rgba(0, 0, 0, 0.35);
+
+        /* Same three layers in the lightened accent. Slightly stronger than
+           the light-mode values because a tint of this size is less visible
+           against a dark ground. */
+        --bg-hero:
+            radial-gradient(58rem 38rem at 82% -80px,
+                            rgba(255, 140, 66, 0.07), transparent 62%),
+            radial-gradient(46rem 32rem at 4% 180px,
+                            rgba(255, 140, 66, 0.04), transparent 64%),
+            linear-gradient(180deg, rgba(255, 140, 66, 0.03), transparent 620px);
+
+        /* Noise is more visible on a dark ground, so it is dialled back. */
+        --bg-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
     }
 }
 
@@ -100,7 +155,17 @@ html {
 }
 
 body {
-    background: var(--bg);
+    background-color: var(--bg);
+    /* Layer order, front to back: noise, scrim, hero. */
+    background-image: var(--bg-noise), var(--bg-scrim), var(--bg-hero);
+    background-repeat: repeat, no-repeat, no-repeat;
+    background-size: 160px 160px, cover, cover;
+    background-position: 0 0, center top, center top;
+    /* Deliberately not `fixed`: iOS Safari handles fixed backgrounds badly,
+       and anchoring to the viewport makes the tint follow the reader down a
+       long page. Scrolling with the document keeps it a masthead wash that
+       fades out once you are into the content. */
+    background-attachment: scroll, scroll, scroll;
     color: var(--fg);
     font-family: var(--font-body);
     font-size: 1rem;
@@ -167,7 +232,7 @@ pre code {
 /* ---------- Links ---------- */
 
 a {
-    color: var(--accent);
+    color: var(--accent-ink);
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 2px;
@@ -210,7 +275,7 @@ header h1 a {
 
 header h1 a:hover {
     opacity: 1;
-    color: var(--accent);
+    color: var(--accent-ink);
 }
 
 nav ul {
@@ -234,13 +299,13 @@ nav a {
 }
 
 nav a:hover {
-    color: var(--accent);
+    color: var(--accent-ink);
     opacity: 1;
 }
 
 /* Current page */
 nav a.active {
-    color: var(--accent);
+    color: var(--accent-ink);
     font-weight: 600;
 }
 
@@ -317,7 +382,7 @@ figure.wide {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.18em;
-    color: var(--accent);
+    color: var(--accent-ink);
     margin: 0 0 calc(var(--space) * 0.35);
 }
 
