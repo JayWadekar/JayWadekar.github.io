@@ -26,6 +26,11 @@
        #1d4ed8 holds 5.88:1 over the same worst-case pixel. */
     --accent-ink: #1d4ed8;
     --rule:      rgba(22, 35, 49, 0.15);
+    /* Mat behind the headshot. His photo has a warm sandstone backdrop
+       (edge average 159,144,119) that sits badly straight against the cool
+       page, worst over the dark navy. A narrow neutral mat buffers the two
+       instead of filtering the photo itself. */
+    --mat:       #ffffff;
     --code-bg:   rgba(22, 35, 49, 0.05);
 
     /* Shadows tinted with the text color rather than black, and given a large
@@ -90,6 +95,7 @@
         --fg:       #e6ecf5;
         --fg-muted: #93a7c4;
         --rule:     rgba(255, 255, 255, 0.18);
+        --mat:      rgba(255, 255, 255, 0.14);
         --code-bg:  rgba(255, 255, 255, 0.07);
 
         /* #2563eb is far too dark over this ground. #38bdf8 is the reference's
@@ -321,6 +327,9 @@ nav a.active {
     height: auto;
     border-radius: 6px;
     margin: 0 0 var(--space) calc(var(--space) * 1.4);
+    padding: 5px;
+    background: var(--mat);
+    box-shadow: var(--shadow-soft);
 }
 
 /* ---------- Sections ---------- */
