@@ -61,7 +61,10 @@
         combination with data-analysis methods motivated by first principles, so
         that what the model has learned can be read back out. Recent work uses
         agentic AI to discover interpretable surrogate models
-        (<a href="https://arxiv.org/abs/2605.11280" target="_blank">arXiv:2605.11280</a>).
+        (<a href="https://arxiv.org/abs/2605.11280" target="_blank">arXiv:2605.11280</a>):
+        the agent searches for a compact analytic resummed surrogate that stands in for
+        an expensive eccentric-waveform simulation, and the output is a formula you can
+        read, not a set of weights.
         Earlier work in this vein used symbolic regression to improve the
         Sunyaev-Zeldovich flux&ndash;mass relation at low halo masses, giving strong
         constraints on baryonic feedback
@@ -69,6 +72,35 @@
         and to model assembly bias
         (<a href="https://arxiv.org/abs/2012.00111" target="_blank">arXiv:2012.00111</a>).
         </p>
+
+        <figure class="wide">
+        <img src="/files/fig_agent_surrogate_1.png"
+             alt="Waveform phase error against agent step, showing kept improvements and discarded trials over a generate-fit-validate loop">
+        <figcaption>The optimization loop our agents use to construct a compact analytic
+        resummed surrogate of an expensive eccentric-waveform simulation. <b>GWAgent</b> cycles
+        through generating candidate models, fitting them to the simulation data, then
+        validating and simplifying whatever survives. Green points are improvements it keeps;
+        gray points are trials it discards, and the discard list is as informative as the kept
+        one &mdash; overfitting random forests and high-degree polynomials are thrown out at
+        validation rather than talked up. Waveform phase error falls from about 24 rad for the
+        bare ansatz to roughly 0.14 rad, approaching the 0.1 rad target. The final steps buy
+        speed rather than accuracy, compactifying 2955 features down to 75 and downsampling to
+        500 points, ending at 79 ms against 274 ms for pySEOBNR.</figcaption>
+        </figure>
+
+        <figure class="wide">
+        <img src="/files/fig_agent_surrogate_2.png"
+             alt="Waveform error against evaluation cost for agent-discovered, symbolic regression and classical ML models">
+        <figcaption>The agent-generated formula compared against established symbolic
+        regression techniques, plotted as accuracy against evaluation cost. The agent-based
+        method outperforms the others: its closed-form analytic surrogates (blue and red) reach
+        waveform errors near 6&times;10<sup>-4</sup>, roughly an order of magnitude below PySR,
+        gplearn, Operon and AI-Feynman, comfortably inside the LIGO mismatch threshold of
+        10<sup>-2</sup>, and about ten times cheaper to evaluate than the pySEOBNR waveform.
+        One secondary detail the plot makes visible: the same procedure driven by different
+        underlying language models spreads over one to two orders of magnitude in error, so the
+        choice of backend matters alongside the method.</figcaption>
+        </figure>
 
         <br/>
         <br/>
