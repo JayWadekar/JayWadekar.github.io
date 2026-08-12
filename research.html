@@ -35,11 +35,10 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
     </script>
     
-        <h3 id="agentic-ai">1. Agentic AI for scientific discovery</h3>
+        <h3 id="agentic-ai">1. Verification-based agentic AI for scientific discovery</h3>
 
         <p>
-        <b>Verification-based agentic AI and physics reasoning.</b> An agent that
-        produces a plausible analysis is not the same as an agent that produces a
+        An agent that produces a plausible analysis is not the same as an agent that produces a
         correct one, so the interesting question is what a system has to justify
         against data and established physics before its output counts &mdash; and
         how you measure whether it can. Gravitational-wave astronomy is an unusually
@@ -56,11 +55,62 @@
         GW231123.
         </p>
 
+        <br/>
+        <br/>
+        <br/>
+
+        <h3 id="gw-searches">2. Gravitational wave searches and parameter estimation</h3>
+        Nearly all of the previous gravitational wave (GW) searches in the LIGO-Virgo data include GW waveforms with only the dominant quadrupole mode, i.e., omitting higher-order harmonics which are predicted by general relativity. We detected new black hole mergers in the LIGO-Virgo O3 data (<a href="https://arxiv.org/abs/2312.06631" target="_blank">arXiv:2312.06631</a>) from a novel search pipeline that includes the higher-order harmonics (<a href="https://arxiv.org/abs/2405.17400" target="_blank">arXiv:2405.17400</a>), which raises the sensitive volume substantially (<a href="https://arxiv.org/abs/2501.17939" target="_blank">arXiv:2501.17939</a>). The black holes in some of the new detections have astrophysically interesting properties such as occupation of the pair-instability mass gap, high-redshift (1 &lt; z &lt; 2), and positive effective spins. Making this affordable also required a new approach to template banks, cutting the matched-filtering cost by over an order of magnitude (<a href="https://arxiv.org/abs/2310.15233" target="_blank">arXiv:2310.15233</a>). We have since used the resulting catalog for population inference (<a href="https://arxiv.org/abs/2508.15350" target="_blank">arXiv:2508.15350</a>). Apart from the search with higher harmonics, I also performed a GW search for exotic objects with large tidal deformabilities (e.g., boson stars and black holes with axion clouds) (<a href="https://arxiv.org/abs/2306.00050" target="_blank">arXiv:2306.00050</a>).
+        <br/>
+        <figure class="wide">
+        <img src="/files/fig_search_events.png"
+             alt="Redshift, mass ratio and effective spin of new black hole mergers found by the IAS-HM search">
+        <figcaption>Properties of new black hole mergers found in the LIGO-Virgo-KAGRA O3 data by our <b>IAS-HM</b> search pipeline, which includes GW higher harmonics beyond the quadrupole mode. Colored contours show our new candidate events, shaded by their probability of being astrophysical; all previously reported events from the O1-O3 runs (combining the LVK, OGC and earlier quadrupole-only IAS catalogs) are in transparent gray. (<a href="https://arxiv.org/abs/2312.06631" target="_blank">arXiv:2312.06631</a>)</figcaption>
+        </figure>
+
+        <figure class="wide">
+        <img src="/files/fig_mode_by_mode.png"
+             alt="Schematic of mode-by-mode filtering followed by marginalization with normalizing flows">
+        <figcaption>Waveforms from precessing or eccentric binaries are a superposition of a dominant mode and several sub-dominant harmonics. The usual approach combines modes into templates before matched-filtering, which inflates the filtering cost sharply (roughly 100&times; on including higher harmonics). We instead filter <i>mode by mode</i>, so cost grows linearly with the number of modes (about 3&times; for higher harmonics), then cheaply combine the resulting SNR timeseries by marginalizing over binary parameters using normalizing flows. (<a href="https://arxiv.org/abs/2405.17400" target="_blank">arXiv:2405.17400</a>, <a href="https://arxiv.org/abs/2603.05784" target="_blank">arXiv:2603.05784</a>)</figcaption>
+        </figure>
+
+        <figure class="wide">
+        <img src="/files/fig_nsbh_pe.png"
+             alt="Parameter estimation posteriors for GW190814 and two simulated O5 neutron star-black hole signals">
+        <figcaption><b>Left:</b> parameter estimation for the potential neutron-star&ndash;black-hole event GW190814 from O3. Including higher harmonics tightens both the secondary mass and the distance, which helps observers plan follow-up. <b>Center and right:</b> results from our rapid extrinsic parameter-estimation method on two simulated NSBH signals at O5 sensitivity, with the true values marked in gray. (<a href="https://arxiv.org/abs/2606.17137" target="_blank">arXiv:2606.17137</a>)</figcaption>
+        </figure>
+
+        <figure class="wide">
+        <img src="/files/fig_glitch_ml.png"
+             alt="Background trigger distribution for low and high mass banks, and the extended-information neural classifier">
+        <figcaption><b>Left:</b> for low-mass template banks the detector background is close to Gaussian, but at high masses it is strongly non-Gaussian, costing a large fraction of the search's sensitive volume. <b>Right:</b> most pipelines rank a trigger using only the local SNR timeseries within about 0.1 s. We supply extended time information &mdash; tens of seconds &mdash; to a neural classifier that can pick up correlations between non-Gaussian noise and turbulent stretches in the detector. The framework is modular and can sit on top of any search pipeline, helping down-weight noise triggers and recover more high-mass black holes in the upper mass gap and IMBH range. (<a href="https://arxiv.org/abs/2507.08318" target="_blank">arXiv:2507.08318</a>, <a href="https://arxiv.org/abs/2601.14326" target="_blank">arXiv:2601.14326</a>)</figcaption>
+        </figure>
+
+        <p><a href="https://n3as.berkeley.edu/wp-content/uploads/2023/09/Wadekar_2309-web.pdf">Here</a> is the link to the PDF of a recent talk
+        </p>
+        The video below is from one of my online talks
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/vfWITud7n5k?si=AdzlgK6SM-J7fzMg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <br/>
+        <br/>
+        <br/>
+    
+        <h3 id="ml-astro">3. Interpretable ML techniques for cosmology and astrophysics</h3>
+        Finding low-scatter relationships in properties of complex systems (e.g., stars, supernovae, galaxies) is important to gain physical insights into them and/or to estimate their distances/masses. As the size of simulation/observational datasets grow, finding low-scatter relationships in the data becomes extremely arduous using manual data analysis methods. We used machine learning techniques to expeditiously search for such relations in abstract high-dimensional data-spaces. Focusing on clusters of galaxies, we found new scaling relations between their properties obtained using ML (<a href="https://arxiv.org/abs/2201.01305" target="_blank">arXiv:2201.01305</a>, <a href="https://arxiv.org/abs/2209.02075" target="_blank">arXiv:2209.02075</a>). Our relations can enable more accurate inference of cosmology and baryonic feedback from upcoming surveys of galaxy clusters such as ACT, SO, eROSITA and CMB-S4. We also explored the use of ML tools to model the galaxy-halo connection (<a href="https://arxiv.org/abs/2111.02422" target="_blank">arXiv:2111.02422</a>) and to model assembly bias with symbolic regression (<a href="https://arxiv.org/abs/2012.00111" target="_blank">arXiv:2012.00111</a>).
+        <br/>
+        <figure class="wide">
+        <img src="/files/SyReg_compilation.png"></br>
+        <figcaption>New equations for mass estimation of galaxy clusters/groups found using symbolic regression. (<a href="https://arxiv.org/abs/2209.02075" target="_blank">arXiv:2209.02075</a>)</figcaption>
+        </figure>
+        <br/>
+        <br/>
+        The video below is from one of my online talks
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/w_ohkLYMSzs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <br/>
+        <br/>
+
         <p>
-        <b>Interpretable AI.</b> I prefer not to use ML end to end, but in
-        combination with data-analysis methods motivated by first principles, so
-        that what the model has learned can be read back out. Recent work uses
-        agentic AI to discover interpretable surrogate models
+        More recently we have turned agents on the same problem: using agentic AI
+        to discover interpretable surrogate models
         (<a href="https://arxiv.org/abs/2605.11280" target="_blank">arXiv:2605.11280</a>):
         the agent searches for a compact analytic resummed surrogate that stands in for
         an expensive eccentric-waveform simulation, and the output is a formula you can
@@ -101,68 +151,17 @@
         underlying language models spreads over one to two orders of magnitude in error, so the
         choice of backend matters alongside the method.</figcaption>
         </figure>
-
-        <br/>
-        <br/>
-        <br/>
-
-        <h3 id="gw-searches">2. Gravitational wave searches and parameter estimation</h3>
-        Nearly all of the previous gravitational wave (GW) searches in the LIGO-Virgo data include GW waveforms with only the dominant quadrupole mode, i.e., omitting higher-order harmonics which are predicted by general relativity. We detected new black hole mergers in the LIGO-Virgo O3 data from a novel search pipeline that includes the higher-order harmonics. The black holes in some of the new detections have astrophysically interesting properties such as occupation of the pair-instability mass gap, high-redshift (1 &lt; z &lt; 2), and positive effective spins. Apart from the search with higher harmonics, I also performed a GW search for exotic objects with large tidal deformabilities (e.g., boson stars and black holes with axion clouds).
-        <br/>
-        <figure class="wide">
-        <img src="/files/fig_search_events.png"
-             alt="Redshift, mass ratio and effective spin of new black hole mergers found by the IAS-HM search">
-        <figcaption>Properties of new black hole mergers found in the LIGO-Virgo-KAGRA O3 data by our <b>IAS-HM</b> search pipeline, which includes GW higher harmonics beyond the quadrupole mode. Colored contours show our new candidate events, shaded by their probability of being astrophysical; all previously reported events from the O1-O3 runs (combining the LVK, OGC and earlier quadrupole-only IAS catalogs) are in transparent gray.</figcaption>
-        </figure>
-
-        <figure class="wide">
-        <img src="/files/fig_mode_by_mode.png"
-             alt="Schematic of mode-by-mode filtering followed by marginalization with normalizing flows">
-        <figcaption>Waveforms from precessing or eccentric binaries are a superposition of a dominant mode and several sub-dominant harmonics. The usual approach combines modes into templates before matched-filtering, which inflates the filtering cost sharply (roughly 100&times; on including higher harmonics). We instead filter <i>mode by mode</i>, so cost grows linearly with the number of modes (about 3&times; for higher harmonics), then cheaply combine the resulting SNR timeseries by marginalizing over binary parameters using normalizing flows.</figcaption>
-        </figure>
-
-        <figure class="wide">
-        <img src="/files/fig_nsbh_pe.png"
-             alt="Parameter estimation posteriors for GW190814 and two simulated O5 neutron star-black hole signals">
-        <figcaption><b>Left:</b> parameter estimation for the potential neutron-star&ndash;black-hole event GW190814 from O3. Including higher harmonics tightens both the secondary mass and the distance, which helps observers plan follow-up. <b>Center and right:</b> results from our rapid extrinsic parameter-estimation method on two simulated NSBH signals at O5 sensitivity, with the true values marked in gray.</figcaption>
-        </figure>
-
-        <figure class="wide">
-        <img src="/files/fig_glitch_ml.png"
-             alt="Background trigger distribution for low and high mass banks, and the extended-information neural classifier">
-        <figcaption><b>Left:</b> for low-mass template banks the detector background is close to Gaussian, but at high masses it is strongly non-Gaussian, costing a large fraction of the search's sensitive volume. <b>Right:</b> most pipelines rank a trigger using only the local SNR timeseries within about 0.1 s. We supply extended time information &mdash; tens of seconds &mdash; to a neural classifier that can pick up correlations between non-Gaussian noise and turbulent stretches in the detector. The framework is modular and can sit on top of any search pipeline, helping down-weight noise triggers and recover more high-mass black holes in the upper mass gap and IMBH range.</figcaption>
-        </figure>
-
-        <p><a href="https://n3as.berkeley.edu/wp-content/uploads/2023/09/Wadekar_2309-web.pdf">Here</a> is the link to the PDF of a recent talk
-        </p>
-        The video below is from one of my online talks
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/vfWITud7n5k?si=AdzlgK6SM-J7fzMg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        <br/>
-        <br/>
-        <br/>
-    
-        <h3 id="ml-astro">3. Interpretable ML techniques for cosmology and astrophysics</h3>
-        Finding low-scatter relationships in properties of complex systems (e.g., stars, supernovae, galaxies) is important to gain physical insights into them and/or to estimate their distances/masses. As the size of simulation/observational datasets grow, finding low-scatter relationships in the data becomes extremely arduous using manual data analysis methods. We used machine learning techniques to expeditiously search for such relations in abstract high-dimensional data-spaces. Focusing on clusters of galaxies, we found new scaling relations between their properties obtained using ML. Our relations can enable more accurate inference of cosmology and baryonic feedback from upcoming surveys of galaxy clusters such as ACT, SO, eROSITA and CMB-S4. We also explored the use of ML tools to model the galaxy-halo connection.
-        <br/>
-        <figure class="wide">
-        <img src="/files/SyReg_compilation.png"></br>
-        <figcaption>New equations for mass estimation of galaxy clusters/groups found using symbolic regression.</figcaption>
-        </figure>
-        <br/>
-        <br/>
-        The video below is from one of my online talks
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/w_ohkLYMSzs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <br/>
         <br/>
         <br/>
         
         <h3 id="dark-matter">4. Using gas-rich dwarf galaxies to probe alternatives to cold, collisionless dark matter</h3>
         
-         Gas-rich dwarf galaxies located outside the virial radius of their host are relatively pristine systems. Due to the ultra-low radiative cooling rate of gas in these dwarfs, they are very strong calorimetric probes of energy injection by alternative dark matter (DM) candidates. We used these dwarfs to obtain strong constraints on popular DM models like millicharged DM, axion like particles (ALPs) and primordial black holes (PBHs). For dark photon DM and for some DM decay models, these dwarfs gives stronger constraints than all the previous literature. Observations of gas-rich dwarfs from current and upcoming 21cm and optical surveys (e.g., Rubin observatory, Roman telescope) therefore open a new way of probing DM.
+         Gas-rich dwarf galaxies located outside the virial radius of their host are relatively pristine systems (<a href="https://arxiv.org/abs/1903.12190" target="_blank">arXiv:1903.12190</a>). Due to the ultra-low radiative cooling rate of gas in these dwarfs, they are very strong calorimetric probes of energy injection by alternative dark matter (DM) candidates. We used these dwarfs to obtain strong constraints on popular DM models like millicharged DM, axion like particles (ALPs) and primordial black holes (PBHs). For dark photon DM and for some DM decay models, these dwarfs gives stronger constraints than all the previous literature (<a href="https://arxiv.org/abs/2111.08025" target="_blank">arXiv:2111.08025</a>, <a href="https://arxiv.org/abs/2211.07668" target="_blank">arXiv:2211.07668</a>). Observations of gas-rich dwarfs from current and upcoming 21cm and optical surveys (e.g., Rubin observatory, Roman telescope) therefore open a new way of probing DM.
          <br/>
          <figure>
         <img src="/files/eDecay.png"></br>
-        <figcaption>Constraints from the gas-rich dwarf Leo T on decay lifetime of DM to e+e-</figcaption>
+        <figcaption>Constraints from the gas-rich dwarf Leo T on decay lifetime of DM to e+e- (<a href="https://arxiv.org/abs/2111.08025" target="_blank">arXiv:2111.08025</a>)</figcaption>
         </figure>
          <p><a href="https://indico.cern.ch/event/1034469/contributions/4432302/attachments/2281276/3876148/Wadekar_DPF21_APS.pdf">Here</a> is the link to the PDF of a recent talk and below is the video
         <iframe width="560" height="315" src="https://www.youtube.com/embed/HYQswzAbqeA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -171,11 +170,11 @@
          
          <h3 id="covariances">5. Analytic covariance matrices for upcoming spectroscopic galaxy surveys</h3>
 In order to infer cosmological parameters from galaxy survey data, we typically use summary statistics such as the power spectrum and need an accurate estimate of their covariance matrix for the likelihood. The traditional process of obtaining the covariance involves simulating thousands of mock catalogs.
-We developed a novel analytic method to compute the covariance matrix which is more than four orders of magnitude faster and has excellent agreement with the state-of-the-art mock simulations upto non-linear scales (k~0.6 h/Mpc). We also validated our analytic method by using it to analyze the full-shape SDSS-BOSS survey data.
+We developed a novel analytic method to compute the covariance matrix which is more than four orders of magnitude faster and has excellent agreement with the state-of-the-art mock simulations upto non-linear scales (k~0.6 h/Mpc) (<a href="https://arxiv.org/abs/1910.02914" target="_blank">arXiv:1910.02914</a>). We also validated our analytic method by using it to analyze the full-shape SDSS-BOSS survey data (<a href="https://arxiv.org/abs/2009.00622" target="_blank">arXiv:2009.00622</a>).
         <br/>
         <figure class="wide">
         <img src="/files/Cov_comparison.png"></br>
-        <figcaption>Results from galaxy power spectrum covariance obtained using our analytic method (2000 mock simulations of BOSS) are in black (orange). Individual matrix elements are compared on the left and parameter constraints from a full-shape BOSS analysis are on the right. Our analytic method is nearly four orders of magnitude faster than the simulation method and provides accurate results.</figcaption>
+        <figcaption>Results from galaxy power spectrum covariance obtained using our analytic method (2000 mock simulations of BOSS) are in black (orange). Individual matrix elements are compared on the left and parameter constraints from a full-shape BOSS analysis are on the right. Our analytic method is nearly four orders of magnitude faster than the simulation method and provides accurate results. (<a href="https://arxiv.org/abs/1910.02914" target="_blank">arXiv:1910.02914</a>, <a href="https://arxiv.org/abs/2009.00622" target="_blank">arXiv:2009.00622</a>)</figcaption>
 
         </figure>
         <br/>
