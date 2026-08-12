@@ -39,7 +39,7 @@ SELF = {"wadekar, d", "wadekar, digvijay", "wadekar, jay"}
 # Collaborators below this many shared papers are dropped from the list.
 MIN_SHARED = 3
 
-# People listed by hand elsewhere on the page — current group members and past
+# People listed by hand elsewhere on the page: current group members and past
 # mentees. Skipped here so nobody appears in two sections.
 GROUP = {
     "islam, t",             # current group

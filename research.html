@@ -40,7 +40,7 @@
         <p>
         An agent that produces a plausible analysis is not the same as an agent that produces a
         correct one, so the interesting question is what a system has to justify
-        against data and established physics before its output counts &mdash; and
+        against data and established physics before its output counts, and
         how you measure whether it can. Gravitational-wave astronomy is an unusually
         demanding testbed for this, because the tasks carry tight numerical
         tolerances and a wrong answer is not obviously wrong. In
@@ -83,7 +83,7 @@
         <figure class="wide">
         <img src="/files/fig_glitch_ml.png"
              alt="Background trigger distribution for low and high mass banks, and the extended-information neural classifier">
-        <figcaption><b>Left:</b> for low-mass template banks the detector background is close to Gaussian, but at high masses it is strongly non-Gaussian, costing a large fraction of the search's sensitive volume. <b>Right:</b> most pipelines rank a trigger using only the local SNR timeseries within about 0.1 s. We supply extended time information &mdash; tens of seconds &mdash; to a neural classifier that can pick up correlations between non-Gaussian noise and turbulent stretches in the detector. The framework is modular and can sit on top of any search pipeline, helping down-weight noise triggers and recover more high-mass black holes in the upper mass gap and IMBH range. (<a href="https://arxiv.org/abs/2507.08318" target="_blank">arXiv:2507.08318</a>, <a href="https://arxiv.org/abs/2601.14326" target="_blank">arXiv:2601.14326</a>)</figcaption>
+        <figcaption><b>Left:</b> for low-mass template banks the detector background is close to Gaussian, but at high masses it is strongly non-Gaussian, costing a large fraction of the search's sensitive volume. <b>Right:</b> most pipelines rank a trigger using only the local SNR timeseries within about 0.1 s. We supply extended time information (tens of seconds) to a neural classifier that can pick up correlations between non-Gaussian noise and turbulent stretches in the detector. The framework is modular and can sit on top of any search pipeline, helping down-weight noise triggers and recover more high-mass black holes in the upper mass gap and IMBH range. (<a href="https://arxiv.org/abs/2507.08318" target="_blank">arXiv:2507.08318</a>, <a href="https://arxiv.org/abs/2601.14326" target="_blank">arXiv:2601.14326</a>)</figcaption>
         </figure>
 
         <p><a href="https://n3as.berkeley.edu/wp-content/uploads/2023/09/Wadekar_2309-web.pdf">Here</a> is the link to the PDF of a recent talk
@@ -131,7 +131,7 @@
         through generating candidate models, fitting them to the simulation data, then
         validating and simplifying whatever survives. Green points are improvements it keeps;
         gray points are trials it discards, and the discard list is as informative as the kept
-        one &mdash; overfitting random forests and high-degree polynomials are thrown out at
+        one: overfitting random forests and high-degree polynomials are thrown out at
         validation rather than talked up. Waveform phase error falls from about 24 rad for the
         bare ansatz to roughly 0.14 rad, approaching the 0.1 rad target. The final steps buy
         speed rather than accuracy, compactifying 2955 features down to 75 and downsampling to

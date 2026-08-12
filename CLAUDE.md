@@ -3,7 +3,7 @@
 Hand-written static HTML on GitHub Pages: `index.html` (About), `research.html`,
 `group.html`, `publications.html`, `videos.html`, `press.html`, one stylesheet,
 `files/` for assets. **No Jekyll, no framework, no build step, no npm.** Keep it
-that way — do not replace the design with a template or theme.
+that way. Do not replace the design with a template or theme.
 
 ## Hard constraints
 
@@ -24,7 +24,7 @@ These come from Jay and are not stylistic preferences:
 **GitHub Pages serves `master`, the default branch.** Pushing a feature branch
 publishes nothing. Merge to `master` and push that.
 
-Pushing is outward-facing — confirm before doing it unless already told to.
+Pushing is outward-facing, so confirm before doing it unless already told to.
 Then verify against the deployed URL, not just the push: fetch each page and any
 new asset, and check that deleted files really 404.
 
@@ -39,8 +39,8 @@ adapted from ai4astro.org (cream ground, ink text, blue accent).
 
 **Two accent tokens, and collapsing them into one reintroduces a real bug:**
 
-- `--accent` — section rules, borders, focus rings. Shapes, not letterforms.
-- `--accent-ink` — accent-coloured *text* (links, active nav). Darker.
+- `--accent`: section rules, borders, focus rings. Shapes, not letterforms.
+- `--accent-ink`: accent-coloured *text* (links, active nav). Darker.
 
 The page carries a faint background tint, and the brand blue as body-size text
 sits too close to the WCAG AA line to survive it. The previous UT burnt orange
@@ -61,7 +61,7 @@ Two mistakes this codebase has already produced, both caught only by measurement
 
 Check `document.documentElement.scrollWidth - clientWidth === 0` on every page at
 375, 768 and 1440px in both colour schemes. And when a colour looks wrong, sample
-the pixel before changing anything — twice now a rule that looked grey measured
+the pixel before changing anything. Twice now a rule that looked grey measured
 as exactly the accent.
 
 ## Generated content
@@ -85,7 +85,7 @@ affiliation a co-author had *when the paper was published*, which goes stale.
 
 **`../../References/papers.md`** is a local ADS-derived cache of every paper's
 title, abstract and arXiv id, refreshed by `update_papers.py` beside it. It is
-outside this repo and untracked. Take arXiv ids from it — never from memory — and
+outside this repo and untracked. Take arXiv ids from it, never from memory, and
 check the id back against the title before attaching it to a claim.
 
 ## Figures from papers
@@ -98,7 +98,7 @@ Captions: ask Jay what a figure shows rather than inferring it. Details like
 "eccentric" or "resummed" are not recoverable from the plot, and a confident
 wrong caption is worse than a thin one.
 
-Use `<figure class="wide">` for data-heavy plots — it bleeds symmetrically past
+Use `<figure class="wide">` for data-heavy plots: it bleeds symmetrically past
 the text column and stays inside the viewport.
 
 ## Still open
@@ -107,5 +107,5 @@ the text column and stays inside the viewport.
   direction, about naming his most striking individual detection.
 - Footer wants an arXiv author link and an ORCID iD; neither has been supplied.
 - `group.html` entries have no photos. Jay is asking his group for them. Do not
-  source someone's photo from a search result — `ul.people` rows collapse
+  source someone's photo from a search result. `ul.people` rows collapse
   cleanly to text without an `<img>`, so photos drop in later with no restyling.

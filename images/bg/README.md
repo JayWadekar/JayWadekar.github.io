@@ -1,7 +1,7 @@
 # images/bg/
 
 **Optional.** Nothing in this directory is required. The site ships with a
-pure-CSS background — layered gradients plus an inline SVG noise texture — and
+pure-CSS background (layered gradients plus an inline SVG noise texture) and
 loads no image files at all. This directory exists so a photographic
 background can be dropped in later without touching any other file.
 
@@ -16,7 +16,7 @@ positioning, the noise overlay) is already wired around it:
 }
 ```
 
-The path is relative to `css/site.css`, not to the page — hence the `../`.
+The path is relative to `css/site.css`, not to the page, hence the `../`.
 
 To use different images for light and dark, set it a second time inside the
 existing `@media (prefers-color-scheme: dark)` block.
@@ -31,7 +31,7 @@ it is scaled to fill the viewport and cropped from the centre.
 | Recommended | **2560 × 1440** (16:9) |
 | Minimum | 1920 × 1080 |
 | Format | JPEG for photographs, WebP if you want it smaller |
-| Target file size | **under 300 KB** — this loads on every page |
+| Target file size | **under 300 KB**, this loads on every page |
 
 Because it is centre-cropped to the viewport, keep anything that matters away
 from the edges. On a tall phone viewport roughly the middle third of the width
@@ -54,7 +54,7 @@ and in the dark block, the same with `rgba(20, 22, 26, 0.86)`.
 
 Then re-check contrast: body text needs **4.5:1** against the lightest point
 the photo reaches behind it, and links need the same. A busy photo will need a
-scrim well above 0.86, at which point very little of it is visible — which is
+scrim well above 0.86, at which point very little of it is visible, which is
 usually the argument for leaving the gradients alone.
 
 ## Constraints

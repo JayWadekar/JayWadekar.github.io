@@ -1,5 +1,5 @@
 /* ==========================================================
-   Jay Wadekar — shared stylesheet
+   Jay Wadekar: shared stylesheet
    Single file. No framework, no build step, no dependencies.
    Replaces normalize.css + base.css + code.css.
    ========================================================== */
@@ -9,7 +9,7 @@
 :root {
     color-scheme: light dark;
 
-    /* Colors — every color in this file comes from a token.
+    /* Colors. Every color in this file comes from a token.
        Palette taken from ai4astro.org: warm cream ground, blue-shifted near
        black text, blue accent. Nothing here is pure black or pure white. */
     --bg:        #f7f7f2;              /* cream */
@@ -17,7 +17,7 @@
     --fg:        #162331;              /* ink */
     --fg-muted:  #55657a;
 
-    /* Blue accent, for section rules, borders and focus rings — the places
+    /* Blue accent, for section rules, borders and focus rings: the places
        where it is a shape rather than a letterform. */
     --accent:    #2563eb;
 
@@ -47,7 +47,7 @@
     --size-base: 17px;
     --leading:   1.65;
 
-    /* Spacing scale — every vertical gap is a multiple of this */
+    /* Spacing scale: every vertical gap is a multiple of this */
     --space: 1.25rem;
 
     /* Layout */
@@ -62,7 +62,7 @@
 
        Nothing else needs to change: the noise, the scrim, the sizing and the
        repeat behaviour are all wired up around it below. If you do swap in a
-       photo, raise --bg-scrim as well — see images/bg/README.md.
+       photo, raise --bg-scrim as well; see images/bg/README.md.
 
        Vertical offsets are in px, not %, so the wash is the same height on a
        short page and on the 5000px research page. */
@@ -403,7 +403,7 @@ figure.wide {
 }
 
 /* The opening line is the page's claim, not a section label, so it carries
-   more weight than the h2s below it — but well short of the reference site's
+   more weight than the h2s below it, but well short of the reference site's
    3rem, which would read as a product landing page. */
 h2.lead {
     font-size: 1.5rem;
