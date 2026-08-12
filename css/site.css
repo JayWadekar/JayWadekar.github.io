@@ -26,10 +26,10 @@
        #1d4ed8 holds 5.88:1 over the same worst-case pixel. */
     --accent-ink: #1d4ed8;
     --rule:      rgba(22, 35, 49, 0.15);
-    /* Mat behind the headshot. His photo has a warm sandstone backdrop
-       (edge average 159,144,119) that sits badly straight against the cool
-       page, worst over the dark navy. A narrow neutral mat buffers the two
-       instead of filtering the photo itself. */
+    /* Narrow mat behind the headshot, so the photo reads as a framed print
+       rather than floating. Originally added because the previous headshot had
+       a warm sandstone backdrop that clashed with the cool page; the current
+       photo is near-neutral at its edge, so this is now framing, not a fix. */
     --mat:       #ffffff;
     --code-bg:   rgba(22, 35, 49, 0.05);
 
