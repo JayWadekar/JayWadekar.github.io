@@ -101,6 +101,24 @@ wrong caption is worse than a thin one.
 Use `<figure class="wide">` for data-heavy plots: it bleeds symmetrically past
 the text column and stays inside the viewport.
 
+## The CV PDF
+
+`files/CV_JayWadekar.pdf` is tracked here, and has to be: Pages has no build
+step, so the file the nav links to must exist in the repo. Its diffs are
+therefore unreadable, which is expected, not a problem to solve here.
+
+The reviewable history lives with the source. `../../CV_Academic` is its own git
+repo holding the `.tex`; read the changes there, and treat the PDF as a
+published artifact. **Keep that repo local or private.** Line 58 of the `.tex`
+is a commented-out personal mobile number, deliberately absent from the compiled
+PDF, and Pages serves every file in a public repo verbatim.
+
+`.gitattributes` sets a `diff=pdf` driver so `git diff` can show what changed in
+the PDF text. It needs one local config line, documented in that file.
+
+Updating the CV means: edit the `.tex`, rebuild and measure the margins per
+`CV_Academic/CLAUDE.md`, then copy the result here. Both halves, one task.
+
 ## Still open
 
 - `index.html` has an HTML-comment TODO in the gravitational-wave research
