@@ -383,6 +383,15 @@ figure.wide {
     margin-right: 0;
 }
 
+/* Same symmetric bleed, held back a little. For single plots that carry their
+   own legend and do not need the full width of a multi-panel compilation. */
+figure.mid {
+    width: min(84vw, 900px);
+    max-width: none;
+    margin-left: calc((100% - min(84vw, 900px)) / 2);
+    margin-right: 0;
+}
+
 /* ---------- Section-header pattern ---------- */
 
 /* Small uppercase label above a heading. Adapted from the reference site,
