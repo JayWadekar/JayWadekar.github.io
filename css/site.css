@@ -461,6 +461,20 @@ ul.people img {
     font-weight: 600;
 }
 
+/* Long people lists in two columns. Grid rather than CSS columns so each
+   entry stays whole instead of being split across the column break. */
+ul.people.two-col {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--gutter);
+}
+
+@media (max-width: 700px) {
+    ul.people.two-col {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* ---------- Topic tags ---------- */
 
 /* Frequency-weighted term list. Rendered as real text at varying size rather

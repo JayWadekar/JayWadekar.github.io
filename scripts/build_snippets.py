@@ -225,7 +225,9 @@ def title_case(phrase):
 
 
 def write_collaborators(rows):
-    out = ['<ul class="people">']
+    # two-col matches how the fragment is pasted into index.html; without it a
+    # regeneration would silently drop the list back to one column.
+    out = ['<ul class="people two-col">']
     for name, n, aff in rows:
         meta = f"{aff} &middot; " if aff else ""
         out.append(
