@@ -1,0 +1,17 @@
+# The CV PDF has to be committed: GitHub Pages has no build step, so the file
+# the site links to must exist in the repo. That makes its diffs unreadable by
+# default. This driver lets `git diff` show the text that changed instead.
+#
+# One-time local setup (the config is not carried in the repo, by design):
+#     brew install poppler                                  # provides pdftotext
+#     git config diff.pdf.textconv "pdftotext -layout - -"
+#
+# Without that config git falls back to "binary files differ", so this line is
+# harmless if you skip it. It does not affect GitHub's web diff view.
+*.pdf diff=pdf
+
+# Keep line endings sane for the hand-written sources.
+*.html text
+*.css  text
+*.md   text
+*.py   text
