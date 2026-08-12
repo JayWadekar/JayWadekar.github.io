@@ -9,28 +9,30 @@
 :root {
     color-scheme: light dark;
 
-    /* Colors — every color in this file comes from a token */
-    --bg:        #ffffff;
-    --fg:        #1c1c1c;
-    --fg-muted:  #5f5f5f;
-    /* UT burnt orange, used for section rules, borders and focus rings — the
-       places where it is a shape rather than a letterform. */
-    --accent:    #bf5700;
+    /* Colors — every color in this file comes from a token.
+       Palette taken from ai4astro.org: warm cream ground, blue-shifted near
+       black text, blue accent. Nothing here is pure black or pure white. */
+    --bg:        #f7f7f2;              /* cream */
+    --surface:   #ffffff;              /* cream-2, for raised elements */
+    --fg:        #162331;              /* ink */
+    --fg-muted:  #55657a;
 
-    /* The same orange darkened, for accent-coloured *text*. #bf5700 measures
-       4.59:1 on pure white: it clears WCAG AA by 0.09, so a background even
-       1% off white drops it under the line (#fdfcfb -> 4.48:1). Since the
-       page now carries a background tint, link text needs the extra depth.
-       This is 4.59:1 against the most tinted pixel the gradient produces. */
-    --accent-ink: #ad4e00;
-    --rule:      rgba(0, 0, 0, 0.15);
-    --code-bg:   rgba(0, 0, 0, 0.05);
+    /* Blue accent, for section rules, borders and focus rings — the places
+       where it is a shape rather than a letterform. */
+    --accent:    #2563eb;
+
+    /* The reference's darker blue, for accent-coloured *text*. #2563eb is
+       4.81:1 on untinted cream, which the background wash erodes to 4.54:1;
+       #1d4ed8 holds 5.88:1 over the same worst-case pixel. */
+    --accent-ink: #1d4ed8;
+    --rule:      rgba(22, 35, 49, 0.15);
+    --code-bg:   rgba(22, 35, 49, 0.05);
 
     /* Shadows tinted with the text color rather than black, and given a large
        negative spread so they sit tight under the element. Lifted from the
        ai4astro token set. */
-    --shadow-card: 0 12px 22px -10px rgba(28, 28, 28, 0.14);
-    --shadow-soft: 0 10px 20px rgba(28, 28, 28, 0.09);
+    --shadow-card: 0 12px 22px -10px rgba(22, 35, 49, 0.14);
+    --shadow-soft: 0 10px 20px rgba(22, 35, 49, 0.09);
     --radius:      0.5rem;
 
     /* Typography */
@@ -61,10 +63,10 @@
        short page and on the 5000px research page. */
     --bg-hero:
         radial-gradient(58rem 38rem at 82% -80px,
-                        rgba(191, 87, 0, 0.055), transparent 62%),
+                        rgba(37, 99, 235, 0.055), transparent 62%),
         radial-gradient(46rem 32rem at 4% 180px,
-                        rgba(191, 87, 0, 0.032), transparent 64%),
-        linear-gradient(180deg, rgba(191, 87, 0, 0.028), transparent 620px);
+                        rgba(37, 99, 235, 0.032), transparent 64%),
+        linear-gradient(180deg, rgba(37, 99, 235, 0.028), transparent 620px);
 
     /* Sits between the page background and the text. Transparent while the
        background is gradients; give it a real value if --bg-hero becomes a
@@ -80,20 +82,21 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg:       #14161a;
-        --fg:       #e6e6e6;
-        --fg-muted: #a0a0a0;
+        /* The reference has no dark mode; it uses these same tokens for its
+           dark *sections*. --deep becomes the page ground and --green-light
+           the accent, which is the swap it already makes over dark panels. */
+        --bg:       #0c2340;               /* deep */
+        --surface:  #16386b;               /* deep-2 */
+        --fg:       #e6ecf5;
+        --fg-muted: #93a7c4;
         --rule:     rgba(255, 255, 255, 0.18);
         --code-bg:  rgba(255, 255, 255, 0.07);
 
-        /* #bf5700 reaches only ~3.9:1 on this background, under the 4.5:1
-           needed for body-size text. Lightening the same hue clears the
-           threshold, so links stay legible in dark mode. The reference site
-           makes the identical move (#2563eb -> #38bdf8 over its dark ground). */
-        --accent:   #ff8c42;
-        /* On the dark ground the lightened accent already measures 6.3:1 over
-           the most tinted pixel, so text and rules can share one value. */
-        --accent-ink: #ff8c42;
+        /* #2563eb is far too dark over this ground. #38bdf8 is the reference's
+           own on-dark accent and measures 7.37:1, so text and rules can share
+           one value here. */
+        --accent:   #38bdf8;
+        --accent-ink: #38bdf8;
 
         --shadow-card: 0 12px 22px -10px rgba(0, 0, 0, 0.5);
         --shadow-soft: 0 10px 20px rgba(0, 0, 0, 0.35);
@@ -103,10 +106,10 @@
            against a dark ground. */
         --bg-hero:
             radial-gradient(58rem 38rem at 82% -80px,
-                            rgba(255, 140, 66, 0.07), transparent 62%),
+                            rgba(56, 189, 248, 0.075), transparent 62%),
             radial-gradient(46rem 32rem at 4% 180px,
-                            rgba(255, 140, 66, 0.04), transparent 64%),
-            linear-gradient(180deg, rgba(255, 140, 66, 0.03), transparent 620px);
+                            rgba(56, 189, 248, 0.045), transparent 64%),
+            linear-gradient(180deg, rgba(56, 189, 248, 0.03), transparent 620px);
 
         /* Noise is more visible on a dark ground, so it is dialled back. */
         --bg-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
