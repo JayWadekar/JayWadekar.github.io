@@ -1,0 +1,439 @@
+/* ==========================================================
+   Jay Wadekar — shared stylesheet
+   Single file. No framework, no build step, no dependencies.
+   Replaces normalize.css + base.css + code.css.
+   ========================================================== */
+
+/* ---------- Design tokens ---------- */
+
+:root {
+    color-scheme: light dark;
+
+    /* Colors — every color in this file comes from a token */
+    --bg:        #ffffff;
+    --fg:        #1c1c1c;
+    --fg-muted:  #5f5f5f;
+    --accent:    #bf5700;              /* links, active nav, section rules ONLY */
+    --rule:      rgba(0, 0, 0, 0.15);
+    --code-bg:   rgba(0, 0, 0, 0.05);
+
+    /* Shadows tinted with the text color rather than black, and given a large
+       negative spread so they sit tight under the element. Lifted from the
+       ai4astro token set. */
+    --shadow-card: 0 12px 22px -10px rgba(28, 28, 28, 0.14);
+    --shadow-soft: 0 10px 20px rgba(28, 28, 28, 0.09);
+    --radius:      0.5rem;
+
+    /* Typography */
+    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --size-base: 17px;
+    --leading:   1.65;
+
+    /* Spacing scale — every vertical gap is a multiple of this */
+    --space: 1.25rem;
+
+    /* Layout */
+    --measure: 70ch;
+    --gutter:  calc(var(--space) * 1.6);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg:       #14161a;
+        --fg:       #e6e6e6;
+        --fg-muted: #a0a0a0;
+        --rule:     rgba(255, 255, 255, 0.18);
+        --code-bg:  rgba(255, 255, 255, 0.07);
+
+        /* #bf5700 reaches only ~3.9:1 on this background, under the 4.5:1
+           needed for body-size text. Lightening the same hue clears the
+           threshold, so links stay legible in dark mode. The reference site
+           makes the identical move (#2563eb -> #38bdf8 over its dark ground). */
+        --accent:   #ff8c42;
+
+        --shadow-card: 0 12px 22px -10px rgba(0, 0, 0, 0.5);
+        --shadow-soft: 0 10px 20px rgba(0, 0, 0, 0.35);
+    }
+}
+
+/* ---------- Minimal reset ---------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body,
+h1, h2, h3,
+p, ul, ol, figure, blockquote {
+    margin: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Video embeds carry hardcoded width="560" height="315" in the markup,
+   which overflows narrow viewports. Scale them with the column instead,
+   holding 16:9, and keep 560px as the ceiling on wide screens. */
+iframe {
+    display: block;
+    width: 100%;
+    max-width: 560px;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border: 0;
+}
+
+/* ---------- Base typography ---------- */
+
+html {
+    font-size: var(--size-base);
+}
+
+body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: var(--leading);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+    margin: 0 0 var(--space);
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+h1 {
+    font-size: 1.9rem;
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+h2 {
+    font-size: 1.2rem;
+    line-height: 1.3;
+    font-weight: 600;
+    margin: 0 0 var(--space);
+}
+
+h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: calc(var(--space) * 1.5) 0 calc(var(--space) * 0.4);
+}
+
+small {
+    font-size: 0.82rem;
+    color: var(--fg-muted);
+}
+
+code, pre, tt {
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+    background: var(--code-bg);
+    border-radius: 3px;
+}
+
+code, tt {
+    padding: 0.1em 0.35em;
+}
+
+pre {
+    padding: var(--space);
+    overflow-x: auto;
+    margin: 0 0 var(--space);
+}
+
+pre code {
+    background: none;
+    padding: 0;
+}
+
+/* ---------- Links ---------- */
+
+a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    transition: opacity 0.15s ease-in-out;
+}
+
+a:hover,
+a:focus {
+    opacity: 0.7;
+}
+
+a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* ---------- Layout ---------- */
+
+.content {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: calc(var(--space) * 2.4) var(--gutter) calc(var(--space) * 3);
+}
+
+/* ---------- Header and nav ---------- */
+
+header {
+    margin: 0 0 calc(var(--space) * 2);
+}
+
+header h1 {
+    margin: 0 0 var(--space);
+}
+
+header h1 a {
+    color: var(--fg);
+    text-decoration: none;
+}
+
+header h1 a:hover {
+    opacity: 1;
+    color: var(--accent);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0 0 calc(var(--space) * 0.6);
+    margin: 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 calc(var(--space) * 1.1);
+}
+
+nav li {
+    margin: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--fg-muted);
+    font-size: 0.94rem;
+}
+
+nav a:hover {
+    color: var(--accent);
+    opacity: 1;
+}
+
+/* Current page */
+nav a.active {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* ---------- Headshot ---------- */
+
+.headshot {
+    float: right;
+    width: 180px;
+    max-width: 180px;
+    height: auto;
+    border-radius: 6px;
+    margin: 0 0 var(--space) calc(var(--space) * 1.4);
+}
+
+/* ---------- Sections ---------- */
+
+section {
+    margin: 0 0 calc(var(--space) * 2);
+}
+
+/* Rule between sections, in the accent color */
+section + section {
+    border-top: 1px solid var(--accent);
+    padding-top: calc(var(--space) * 2);
+}
+
+section ul {
+    padding-left: 1.25em;
+    margin: 0 0 var(--space);
+}
+
+section ul.plain {
+    list-style: none;
+    padding-left: 0;
+}
+
+section li {
+    margin: 0 0 calc(var(--space) * 0.5);
+}
+
+/* ---------- Figures ---------- */
+
+figure {
+    margin: calc(var(--space) * 1.5) 0;
+    text-align: center;
+}
+
+figcaption {
+    font-size: 0.82rem;
+    line-height: 1.45;
+    color: var(--fg-muted);
+    text-align: left;
+    margin-top: calc(var(--space) * 0.5);
+}
+
+/* Data-heavy plots need more room than the text measure. These bleed
+   symmetrically past the column and stay inside the viewport, replacing
+   the old hand-tuned negative margins that assumed a 600px column. */
+figure.wide {
+    width: min(94vw, 1080px);
+    max-width: none;
+    margin-left: calc((100% - min(94vw, 1080px)) / 2);
+    margin-right: 0;
+}
+
+/* ---------- Section-header pattern ---------- */
+
+/* Small uppercase label above a heading. Adapted from the reference site,
+   scaled down: this is a faculty page, so the heading below it stays at the
+   existing h2 size rather than jumping to 3rem. */
+.eyebrow {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    margin: 0 0 calc(var(--space) * 0.35);
+}
+
+.eyebrow + h2 {
+    margin-bottom: calc(var(--space) * 0.6);
+}
+
+/* Short standfirst under a section heading */
+.section-intro {
+    color: var(--fg-muted);
+    margin: 0 0 calc(var(--space) * 1.2);
+}
+
+/* ---------- Row pattern (news, software, people, collaborators) ---------- */
+
+/* Distinct typographic tiers built from two sizes plus muting, following the
+   reference site's lecture-row hierarchy. */
+
+/* Dated list entries (News) */
+.date {
+    color: var(--fg-muted);
+    font-variant-numeric: tabular-nums;
+    margin-right: 0.5em;
+}
+
+/* Software entries */
+.project-name {
+    font-weight: 600;
+}
+
+/* Tier-3 line: role, affiliation, or any secondary metadata */
+.meta {
+    display: block;
+    font-size: 0.88rem;
+    color: var(--fg-muted);
+}
+
+/* People rows. Photos are optional: with no <img> the row collapses to a
+   flat text entry with no reserved gap and no placeholder box. */
+ul.people {
+    list-style: none;
+    padding-left: 0;
+    margin: 0 0 var(--space);
+}
+
+ul.people li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space);
+    margin: 0 0 calc(var(--space) * 0.9);
+}
+
+ul.people img {
+    flex: 0 0 auto;
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+}
+
+.person-name {
+    font-weight: 600;
+}
+
+/* ---------- Topic tags ---------- */
+
+/* Frequency-weighted term list. Rendered as real text at varying size rather
+   than as a generated image, so it stays selectable, searchable, scalable and
+   readable by a screen reader. --w runs 0 (rarest) to 1 (most common). */
+ul.topics {
+    list-style: none;
+    padding-left: 0;
+    margin: 0 0 var(--space);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35em 0.9em;
+    line-height: 1.5;
+}
+
+ul.topics li {
+    margin: 0;
+    font-size: calc(0.85rem + (var(--w) * 0.75rem));
+    color: color-mix(in srgb, var(--fg) calc(45% + (var(--w) * 55%)), transparent);
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+    margin: calc(var(--space) * 2.5) 0 0;
+    padding-top: calc(var(--space) * 1.2);
+    border-top: 1px solid var(--rule);
+    font-size: 0.9rem;
+    color: var(--fg-muted);
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 700px) {
+    :root {
+        --gutter: var(--space);
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    /* Headshot stacks and centers */
+    .headshot {
+        float: none;
+        display: block;
+        margin: 0 auto var(--space);
+    }
+
+    nav ul {
+        gap: 0 calc(var(--space) * 0.85);
+    }
+}
