@@ -132,3 +132,9 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+
+# Local working notes for Claude Code. Deliberately untracked: this repo is
+# public and served verbatim by GitHub Pages, so it is not a safe place for
+# private editorial instructions.
+CLAUDE.md
+CLAUDE.local.md
