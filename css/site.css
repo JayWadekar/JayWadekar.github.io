@@ -10,10 +10,11 @@
     color-scheme: light dark;
 
     /* Colors. Every color in this file comes from a token.
-       Palette taken from ai4astro.org: warm cream ground, blue-shifted near
-       black text, blue accent. Nothing here is pure black or pure white. */
-    --bg:        #f7f7f2;              /* cream */
-    --surface:   #ffffff;              /* cream-2, for raised elements */
+       Type and accent come from ai4astro.org; the ground is a cooler, deeper
+       blue-violet than the reference cream, which Jay preferred. Nothing here
+       is pure black or pure white. */
+    --bg:        #ecedf6;              /* cool blue-violet ground */
+    --surface:   #ffffff;              /* raised elements */
     --fg:        #162331;              /* ink */
     /* Secondary text: affiliations, dates, captions, footers. Deliberately
        not lighter than this. On group.html 43% of the visible characters are
@@ -95,8 +96,8 @@
         /* The reference has no dark mode; it uses these same tokens for its
            dark *sections*. --deep becomes the page ground and --green-light
            the accent, which is the swap it already makes over dark panels. */
-        --bg:       #0c2340;               /* deep */
-        --surface:  #16386b;               /* deep-2 */
+        --bg:       #0d1832;               /* deep blue-violet */
+        --surface:  #1c2a55;
         --fg:       #e6ecf5;
         --fg-muted: #b3c3da;
         --rule:     rgba(255, 255, 255, 0.18);
