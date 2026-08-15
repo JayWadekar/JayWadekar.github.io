@@ -107,17 +107,26 @@ the text column and stays inside the viewport.
 step, so the file the nav links to must exist in the repo. Its diffs are
 therefore unreadable, which is expected, not a problem to solve here.
 
-The reviewable history lives with the source. `../../CV_Academic` is its own git
-repo holding the `.tex`; read the changes there, and treat the PDF as a
-published artifact. **Keep that repo local or private.** Line 58 of the `.tex`
-is a commented-out personal mobile number, deliberately absent from the compiled
-PDF, and Pages serves every file in a public repo verbatim.
+**The `.tex` in `../../CV_Academic` is deliberately not version controlled.**
+Jay's decision: the PDF committed here is the record, and he does not want the
+source tracked. Do not offer to change that. It also must not go into a public
+repo regardless: line 58 is a commented-out personal mobile number that is
+absent from the compiled PDF, and Pages serves every file verbatim.
+
+Committing the PDF is the right call here, not a compromise. The alternatives
+are worse: a CI job to build LaTeX on push adds the build step this site exists
+without, an external host adds link rot to a nav link, and **Git LFS would break
+the site outright, because Pages does not resolve LFS pointers and would serve
+the pointer file instead of the PDF.** The cost is small and measured: 19
+revisions of the PDF come to 2.6 MB uncompressed in a 12 MB repo, where single
+figures like `files/Jan2019.pdf` are larger than the CV's entire history.
 
 `.gitattributes` sets a `diff=pdf` driver so `git diff` can show what changed in
 the PDF text. It needs one local config line, documented in that file.
 
 Updating the CV means: edit the `.tex`, rebuild and measure the margins per
-`CV_Academic/CLAUDE.md`, then copy the result here. Both halves, one task.
+`CV_Academic/CLAUDE.md`, then copy the result here and commit. Both halves, one
+task.
 
 ## Still open
 
