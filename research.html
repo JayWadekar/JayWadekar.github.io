@@ -55,6 +55,19 @@
         GW231123.
         </p>
 
+        <p>
+        The same machinery can be turned on model discovery. Using agentic AI we
+        search for interpretable surrogate models
+        (<a href="https://arxiv.org/abs/2605.11280" target="_blank">arXiv:2605.11280</a>):
+        the agent looks for a compact analytic resummed surrogate to stand in for an
+        expensive eccentric-waveform simulation, and what comes out is a formula you
+        can read rather than a set of weights. Verification is what makes this work
+        rather than a plausible-looking answer, since each candidate is kept or thrown
+        out on how it performs out of sample. It continues the interpretable machine
+        learning described in <a href="#ml-astro">section 3</a>, with the search now
+        run by an agent.
+        </p>
+
         <figure class="mid">
         <img src="/files/fig_agent_surrogate_1.png"
              alt="Waveform phase error against agent step, showing kept improvements and discarded trials over a generate-fit-validate loop">
@@ -137,19 +150,15 @@
         <br/>
 
         <p>
-        More recently we have turned agents on the same problem: using agentic AI
-        to discover interpretable surrogate models
-        (<a href="https://arxiv.org/abs/2605.11280" target="_blank">arXiv:2605.11280</a>):
-        the agent searches for a compact analytic resummed surrogate that stands in for
-        an expensive eccentric-waveform simulation, and the output is a formula you can
-        read, not a set of weights (see the figures under
-        <a href="#agentic-ai">section 1</a>).
-        Earlier work in this vein used symbolic regression to improve the
-        Sunyaev-Zeldovich flux&ndash;mass relation at low halo masses, giving strong
-        constraints on baryonic feedback
-        (<a href="https://arxiv.org/abs/2209.02075" target="_blank">arXiv:2209.02075</a>),
-        and to model assembly bias
-        (<a href="https://arxiv.org/abs/2012.00111" target="_blank">arXiv:2012.00111</a>).
+        The common thread is symbolic regression, which returns an explicit
+        equation rather than a fitted network. That matters for more than
+        aesthetics: an equation can be checked against physical intuition,
+        carried into an analytic calculation, and applied outside the range it
+        was fit on, none of which a black-box model supports. The low-halo-mass
+        corrections to the Sunyaev-Zeldovich flux&ndash;mass relation
+        (<a href="https://arxiv.org/abs/2209.02075" target="_blank">arXiv:2209.02075</a>)
+        are the clearest example. More recent work hands the search itself to an
+        agent, described in <a href="#agentic-ai">section 1</a>.
         </p>
 
         <br/>
