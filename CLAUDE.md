@@ -21,12 +21,35 @@ These come from Jay and are not stylistic preferences:
 
 ## Publishing
 
+**Committing is fine. Do not push until Jay explicitly says so.** This is a
+standing instruction, not a per-task one, and it holds however finished or urgent
+a change looks. Commit freely at sensible boundaries, then stop; the point is
+that he reviews locally, from his own folder, before anything reaches the public
+site.
+
+So keep the local preview running whenever you are editing, and give him the URL:
+
+```bash
+cd MyWebsite/JayWadekar.github.io && python3 -m http.server 8899
+# http://localhost:8899/
+```
+
+It serves the working tree, so it shows the pending state whether or not it has
+been committed. `git log origin/master..HEAD` is the other half of the review:
+that is the list he is deciding about.
+
+Practical consequences: unpushed commits accumulate across many turns, so
+`master` sitting several commits ahead of `origin/master` is the expected state
+and not something to resolve. Say how many commits are unpushed when reporting,
+so nothing is lost track of.
+
 **GitHub Pages serves `master`, the default branch.** Pushing a feature branch
 publishes nothing. Merge to `master` and push that.
 
-Pushing is outward-facing, so confirm before doing it unless already told to.
-Then verify against the deployed URL, not just the push: fetch each page and any
-new asset, and check that deleted files really 404.
+After a push, verify against the deployed URL, not just the push: fetch each page
+and any new asset, and check that deleted files really 404. Wait on a condition
+that is actually *new*, not one the old page already satisfied, or the check
+passes instantly against stale content.
 
 Git identity is set `--local` on purpose (personal gmail), so it is not attached
 to UT-managed repos. Do not make it global.

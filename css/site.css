@@ -15,16 +15,21 @@
     --bg:        #f7f7f2;              /* cream */
     --surface:   #ffffff;              /* cream-2, for raised elements */
     --fg:        #162331;              /* ink */
-    --fg-muted:  #55657a;
+    /* Secondary text: affiliations, dates, captions, footers. Deliberately
+       not lighter than this. On group.html 43% of the visible characters are
+       muted, and research.html 37%, so this tone carries a large share of the
+       actual reading; at the previous #55657a it measured 5.54:1 against
+       14.8:1 headings, which read as washed out. Now 8.80:1. */
+    --fg-muted:  #3b4756;
 
     /* Blue accent, for section rules, borders and focus rings: the places
        where it is a shape rather than a letterform. */
     --accent:    #2563eb;
 
-    /* The reference's darker blue, for accent-coloured *text*. #2563eb is
-       4.81:1 on untinted cream, which the background wash erodes to 4.54:1;
-       #1d4ed8 holds 5.88:1 over the same worst-case pixel. */
-    --accent-ink: #1d4ed8;
+    /* Accent-coloured *text*, darker than --accent. #2563eb is only 4.81:1 on
+       untinted cream and the background wash erodes that to 4.54:1. This holds
+       7.01:1 over the same worst-case pixel. */
+    --accent-ink: #1740b0;
     --rule:      rgba(22, 35, 49, 0.15);
     /* Narrow mat behind the headshot, so the photo reads as a framed print
        rather than floating. Originally added because the previous headshot had
@@ -93,7 +98,7 @@
         --bg:       #0c2340;               /* deep */
         --surface:  #16386b;               /* deep-2 */
         --fg:       #e6ecf5;
-        --fg-muted: #93a7c4;
+        --fg-muted: #b3c3da;
         --rule:     rgba(255, 255, 255, 0.18);
         --mat:      rgba(255, 255, 255, 0.14);
         --code-bg:  rgba(255, 255, 255, 0.07);
@@ -303,7 +308,7 @@ nav li {
 
 nav a {
     text-decoration: none;
-    color: var(--fg-muted);
+    color: var(--fg);
     font-size: 0.94rem;
 }
 
